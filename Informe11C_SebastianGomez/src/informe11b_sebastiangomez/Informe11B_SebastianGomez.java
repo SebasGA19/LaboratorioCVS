@@ -1,40 +1,50 @@
 
 package informe11b_sebastiangomez;
 import java.util.Random;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 /**
  *
  * @author SeGA
  */
 public class Informe11B_SebastianGomez {
+    private static DecimalFormat df = new DecimalFormat("0.00");
+
 
     public static void main(String[] args) {
         // Llamado a las funciones
         System.out.println("Ingresos: ");
+        System.out.println("      Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre");
         float ingresos[][]= new float[4][12];
         ingresos=generador(100,180);
         imprimir(ingresos);
         
         System.out.println("Egresos :");
+        System.out.println("      Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre");
         float egresos[][]= new float[4][12];
         egresos=generador(60,130);
         imprimir(egresos);
         
         System.out.println("Ganancias :");
+        System.out.println("      Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre");
         float ganancias[][]= new float[4][12];
         ganancias=restador(ingresos,egresos);
         imprimir(ganancias);
         
         System.out.println("Ingresos 3D: ");
+        System.out.println("      Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre");
         float ingresos3D[][][]= new float[4][12][4];
         ingresos3D=generador3D(ingresos,9.5);
         imprimir3D(ingresos3D);
         
         System.out.println("Egresos 3D: ");
+        System.out.println("      Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre");
         float egresos3D[][][]= new float[4][12][4];
         egresos3D= generador3D(egresos,6.5);
         imprimir3D(egresos3D);
         
         System.out.println("Ganancias 3D: ");
+        System.out.println("      Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre");
         float ganancias3D[][][]= new float[4][12][4];
         ganancias3D= calcular_ganancias3D(ingresos3D,egresos3D);
         imprimir3D(ganancias3D);
@@ -111,7 +121,24 @@ public class Informe11B_SebastianGomez {
         for(int z=0 ; z<4 ; z++){
             for(int i=0 ; i<4 ; i++){
                 for(int j=0 ; j<12 ; j++){
-                System.out.print(matriz3D[i][j][z]+ " ");
+                if(j!=0){
+                System.out.print(df.format(matriz3D[i][j][z])+ " ");
+                }
+                else{
+                    if(j==0 && i==0){
+                        System.out.print("Bucaramanga: "+df.format(matriz3D[i][j][z])+ " ");
+                    }
+                    if(j==0 && i==1){
+                        System.out.print("Floridablanca :"+df.format(matriz3D[i][j][z])+ " ");
+                    }
+                    if(j==0 && i==2){
+                        System.out.print("Giron :"+df.format(matriz3D[i][j][z])+ " ");
+                    }
+                    if(j==0 && i==3){
+                        System.out.print("Piedecuesta :"+df.format(matriz3D[i][j][z])+ " ");
+                    }
+                
+                }
                 
                 }
                 System.out.println("");
